@@ -63,7 +63,6 @@ public:
 int main()
 {
 	std::vector<int> ints;
-	std::vector<int> absInts;
 	std::string sign = "";
 	std::string output;
 	ints.push_back(18);
