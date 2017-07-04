@@ -63,6 +63,7 @@ int main()
 	ints.push_back(18);
 	ints.push_back(-434);
 	ints.push_back(67);
+	ints.push_back(0);
 	for (int i = 0; i < ints.size(); i++) {
 		absInts.push_back(abs(ints[i])); // Use vector of abs rather than raw values to avoid having to deal with misplaced "-"
 	}
