@@ -11,9 +11,14 @@
 class NumberConverter {
 private:
 	std::string out;
+	std::string sign ="";
 public:
 	// converts int to hex
 	void intToHex(int num) {
+		if (num < 0) { // Grabs negatives
+			num *= -1;
+			sign = "-";
+		}
 		int temp = num % 16;
 		num /= 16;
 		
@@ -46,11 +51,12 @@ public:
 
 	// gets output value
 	std::string getNum() {
-		return out;
+		return sign + out;
 	}
-	// Prevents output from accumulating
+	// Prevents output from accumulating, resets sign
 	void clearOut() {
 		out = "";
+		sign = "";
 	}
 };
 
@@ -64,18 +70,9 @@ int main()
 	ints.push_back(-434);
 	ints.push_back(67);
 	ints.push_back(0);
-	for (int i = 0; i < ints.size(); i++) {
-		absInts.push_back(abs(ints[i])); // Use vector of abs rather than raw values to avoid having to deal with misplaced "-"
-	}
 	NumberConverter nc;
-	for (int i = 0; i < absInts.size(); i++) {
-		if (ints[i] != absInts[i]) {
-			sign = "-";
-		}
-		else {
-			sign = "";
-		}
-		nc.intToHex(absInts[i]);
+	for (int i = 0; i < ints.size(); i++) {
+		nc.intToHex(ints[i]);
 		std::cout << ints[i] << " in hex is " << sign << nc.getNum() << std::endl;
 		nc.clearOut();
 	}
